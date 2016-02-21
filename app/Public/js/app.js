@@ -1,24 +1,21 @@
 /**
  * Created by King on 28-12-2014.
  */
-var mmApp = angular.module('mmApp', ['ngRoute']);
+var mmApp = angular.module('mmApp', ['ngRoute', 'ngResource']);
 
 mmApp.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/1', {
-                templateUrl: './partials/part1.html',
-                //controller: 'ExpenseCtrl',
-                //activetab: "addexpense"
+                templateUrl: './partials/list.html',
+                controller: 'EmployeesCtrl'
             }).
             when('/2', {
-                templateUrl: './partials/part2.html',
-                //controller: 'IncomeCtrl',
-                //activetab: "addincome"
+                templateUrl: './partials/create.html',
+                controller: 'NewEmployeeCtrl'
             }).
-            when('/3', {
-                templateUrl: './partials/part3.html',
-                //activetab: "summary"
-                //controller: 'SummaryViewCtrl'
+            when('/3/:id', {
+                templateUrl: './partials/edit.html',
+                controller: 'EmployeeCtrl'
             }).
             otherwise({
                 redirectTo: '/1'

@@ -1,0 +1,21 @@
+<h3>Employees</h3>
+
+<table class="u-full-width">
+  <tr>
+    <th>Emp#</th>
+    <th>Name</th>    
+    <th></th>    
+  </tr>
+  <tr ng-repeat="item in employees">
+      <td style="text-align: right">
+          <span>{{item.id}}</span>
+      </td>
+      <td>
+          <span>{{item.name}}</span>
+      </td>
+      <td>              
+        <a href="#/3/{{item.id}}">Edit</a>
+        <a href ng-click="removeEmployee(item)">Delete</a>
+      </td>
+  </tr>
+</table>

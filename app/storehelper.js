@@ -12,12 +12,16 @@ StoreHelper.prototype.find = function(data, att, val){
 };
 
 StoreHelper.prototype.remove = function(data, item){
-	data.delete(item);
-	return;
+	for(var i in data){
+		if(data[i]["id"]==item.id){
+			data.splice(i, 1);
+			return;
+		}
+	}
 };
 
-StoreHelper.prototype.getNextId = function(data){
-	var ret=0;
+StoreHelper.prototype.getid = function(data){
+	var ret=-1;
 	for(var i in data){
 		if(data[i]["id"]>ret){
 			ret = data[i]["id"]

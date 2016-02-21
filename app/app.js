@@ -45,7 +45,8 @@ apirouter.get('/employees', function (req, res){
 })
 .post('/employees', function (req, res){
 	//create a new employees
-	var item = {"name": req.body.name, "id": helper.getNextId()};
+	var item = {"name": req.body.name, "id": helper.getid(store.employees)};
+	store.employees.push(item);
 	res.send(201).json({ id: item.id, url:'/api/employees/:'+item.id });
 });
 
@@ -87,7 +88,7 @@ apirouter.get('/employees/:id', function (req, res) {
 		res.send(200);
 	}
 	else
-		res.send(404).json({ error: 'not found!!' }); //create??
+		res.send(404).json({ error: 'not found!!' });
 });
 
 app.use('/api', apirouter);
