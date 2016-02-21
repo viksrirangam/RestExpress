@@ -47,7 +47,7 @@ apirouter.get('/employees', function (req, res){
 	//create a new employees
 	var item = {"name": req.body.name, "id": helper.getid(store.employees)};
 	store.employees.push(item);
-	res.send(201).json({ id: item.id, url:'/api/employees/:'+item.id });
+	res.json(201, { id: item.id, url:'/api/employees/:'+item.id });
 });
 
 apirouter.get('/employees/:id', function (req, res) {
@@ -56,7 +56,7 @@ apirouter.get('/employees/:id', function (req, res) {
 	if(item)
 		res.json(item);
 	else
-		res.send(404).json({ error: 'not found!!' });
+		res.json(404, { error: 'not found!!' });
 })
 .put('/employees/:id', function (req, res){
 	//update employee by id
@@ -64,10 +64,10 @@ apirouter.get('/employees/:id', function (req, res) {
 	if(item){
 		//update entity
 		item.name=req.body.name;
-		res.send(200);
+		res.json(200, { url:'/api/employees/:'+item.id });
 	}
 	else
-		res.send(404).json({ error: 'not found!!' }); //create??
+		res.json(404, { error: 'not found!!' }); //create??
 })
 .delete('/employees/:id', function (req, res){
 	//delete employee by id
@@ -76,7 +76,7 @@ apirouter.get('/employees/:id', function (req, res) {
 		helper.remove(store.employees, item);
 		res.send(200);
 	}else
-		res.send(404).json({ error: 'not found!!' });
+		res.json(404, { error: 'not found!!' });
 })
 .patch('/employees/:id', function (req, res){
 	//partial update employee by id
@@ -85,10 +85,10 @@ apirouter.get('/employees/:id', function (req, res) {
 		//update entity
 		if(req.body.name)
 			item.name=req.body.name;
-		res.send(200);
+		res.json(200, { url:'/api/employees/:'+item.id });
 	}
 	else
-		res.send(404).json({ error: 'not found!!' });
+		res.json(404, { error: 'not found!!' });
 });
 
 app.use('/api', apirouter);

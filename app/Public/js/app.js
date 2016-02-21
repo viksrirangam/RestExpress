@@ -17,6 +17,10 @@ mmApp.config(['$routeProvider', function ($routeProvider) {
                 templateUrl: './partials/edit.html',
                 controller: 'EmployeeCtrl'
             }).
+            when('/err', {
+                templateUrl: './partials/error.html',
+					controller: 'ErrorCtrl'
+            }).
             otherwise({
                 redirectTo: '/1'
             });

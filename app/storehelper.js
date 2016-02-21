@@ -27,5 +27,5 @@ StoreHelper.prototype.getid = function(data){
 			ret = data[i]["id"]
 		}
 	}
-	return ret;
+	return ret+1;
 };
