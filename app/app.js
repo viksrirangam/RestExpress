@@ -13,6 +13,8 @@ var app = express();
 */
 app.use(express.static('public'));
 
+app.disable('x-powered-by');
+
 /**
 * Handles posted data
 */
